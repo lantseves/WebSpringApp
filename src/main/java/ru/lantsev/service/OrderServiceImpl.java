@@ -2,9 +2,7 @@ package ru.lantsev.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.lantsev.model.dao.OrderDao;
-import ru.lantsev.model.dao.OrderDaoHibernate;
+import ru.lantsev.model.dao.order.OrderDao;
 import ru.lantsev.model.entry.Order;
 
 import java.util.List;

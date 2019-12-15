@@ -1,4 +1,4 @@
-package ru.lantsev.model.dao;
+package ru.lantsev.model.dao.order;
 
 import ru.lantsev.model.entry.Order;
 

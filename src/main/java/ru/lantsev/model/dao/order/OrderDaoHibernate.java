@@ -1,10 +1,10 @@
-package ru.lantsev.model.dao;
+package ru.lantsev.model.dao.order;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ru.lantsev.model.dao.order.OrderDao;
 import ru.lantsev.model.entry.Order;
 
 import java.util.List;
