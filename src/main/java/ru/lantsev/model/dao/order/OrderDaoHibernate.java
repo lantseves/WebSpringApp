@@ -19,15 +19,26 @@ public class OrderDaoHibernate implements OrderDao {
         this.sessionFactory = sessionFactory;
     }
 
+
+    @Transactional(readOnly = true)
     @Override
     public List<Order> allOrder() {
-        List<Order> list = sessionFactory.getCurrentSession().createQuery("from Order").list() ;
-        return list;
+        return sessionFactory.getCurrentSession().createQuery("from Order" , Order.class).list();
     }
 
     @Override
-    public void add(Order order) {
-        sessionFactory.getCurrentSession().persist(order);
+    public List<Order> allOrderWithDish() {
+        return sessionFactory.getCurrentSession().createQuery(
+                "select o from Order o " +
+                "left join fetch o.dishes d " +
+                        "left join fetch d.recipe r" , Order.class)
+                .list();
+    }
+
+    @Override
+    public Order save(Order order) {
+        sessionFactory.getCurrentSession().saveOrUpdate(order);
+        return order ;
     }
 
     @Override
@@ -35,13 +46,13 @@ public class OrderDaoHibernate implements OrderDao {
         sessionFactory.getCurrentSession().delete(order);
     }
 
-    @Override
-    public void edit(Order order) {
-        sessionFactory.getCurrentSession().update(order);
-    }
-
+    @Transactional(readOnly = true)
     @Override
     public Order getById(long id) {
-        return sessionFactory.getCurrentSession().get(Order.class , id);
+        return sessionFactory.getCurrentSession().createQuery(
+                "select o from Order o " +
+                "left join fetch o.dishes where o.id = :id" , Order.class)
+                .setParameter("id" , id)
+                .uniqueResult();
     }
 }

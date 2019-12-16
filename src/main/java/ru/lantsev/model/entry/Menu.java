@@ -14,4 +14,28 @@ public class Menu {
         joinColumns = @JoinColumn(name = "recipe_id"),
         inverseJoinColumns = @JoinColumn(name = "menu_id"))
     private Set<Recipe> recipes = new HashSet<>() ;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    public void addRecipe(Recipe recipe) {
+        this.recipes.add(recipe) ;
+    }
+
+    public void removeRecipe(Recipe recipe) {
+        this.recipes.remove(recipe) ;
+    }
 }

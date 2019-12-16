@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.lantsev.model.entry.Order;
-import ru.lantsev.service.OrderService;
-import ru.lantsev.service.OrderServiceImpl;
+import ru.lantsev.service.order.OrderService;
 
 @Controller
 public class OrderController {
@@ -41,7 +40,7 @@ public class OrderController {
     public ModelAndView editOrder(@ModelAttribute("order") Order order) {
         ModelAndView modelAndView = new ModelAndView() ;
         modelAndView.setViewName("redirect:/");
-        orderService.edit(order);
+        orderService.save(order);
         return modelAndView ;
     }
 
@@ -56,7 +55,7 @@ public class OrderController {
     public ModelAndView addOrder(@ModelAttribute("order") Order order) {
         ModelAndView modelAndView = new ModelAndView() ;
         modelAndView.setViewName("redirect:/");
-        orderService.add(order);
+        orderService.save(order);
         return modelAndView ;
     }
 
