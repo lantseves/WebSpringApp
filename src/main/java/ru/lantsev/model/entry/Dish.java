@@ -10,6 +10,12 @@ public class Dish {
     @Column(name = "id")
     private long id ;
 
+    @Column(name = "salary")
+    private double salary ;
+
+    @Column(name = "name")
+    private String name ;
+
     @OneToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe ;
