@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<spring:url value = "orders/" var="orderUrl"/>
 <html>
 <head>
     <title>Orders</title>
@@ -25,7 +27,7 @@
                 <td>${order.name}</td>
                 <td>${order.salary}</td>
                 <td>
-                    <a href="edit/${order.id}">edit</a>
+                    <a href="${orderUrl}${order.id}?form">edit</a>
                     <a href="delete/${order.id}">delete</a>
                 </td>
             </tr>

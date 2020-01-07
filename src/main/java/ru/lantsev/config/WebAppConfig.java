@@ -35,6 +35,8 @@ public class WebAppConfig implements WebMvcConfigurer {
     @Bean
     UrlBasedViewResolver viewResolver() {
         UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+        //viewResolver.setPrefix("/WEB-INF/views/");
+        //viewResolver.setSuffix(".jsp");
         viewResolver.setViewClass(TilesView.class);
         return viewResolver;
     }

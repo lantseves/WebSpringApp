@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.lantsev.model.entry.Order;
 import ru.lantsev.service.order.OrderService;
 
-@RequestMapping("/")
+@RequestMapping("/orders")
 @Controller
 public class OrderController {
 
@@ -19,27 +19,16 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
     @GetMapping
-    public String homePage(Model model) {
-        return "homePage";
+    public String orders(Model model) {
+        model.addAttribute("orders", orderService.allOrder()) ;
+        return "ordersPage";
     }
 
-    /*
-    @GetMapping()
-    public ModelAndView allOrder() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("orders/order");
-        modelAndView.addObject("orders" , orderService.allOrder()) ;
-        return modelAndView;
-    }*/
-
-    @GetMapping(value = "edit/{id}")
-    public ModelAndView editOrder(@PathVariable("id") long id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("orders/editOrder");
-        modelAndView.addObject("order", orderService.getById(id)) ;
-        return modelAndView;
+    @GetMapping(value = "/{id}", params = "form")
+    public String editOrder(@PathVariable("id") long id, Model model) {
+        model.addAttribute("order", orderService.getById(id)) ;
+        return "orderEditPage";
     }
 
     @PostMapping(value = "edit")

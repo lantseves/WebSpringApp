@@ -9,19 +9,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <c:if test="${empty order.name}">
-        <title>Add Order</title>
-    </c:if>
-    <c:if test="${!empty order.name}">
-        <title>Edit Order</title>
-    </c:if>
+        <title>Edit Order</title
 </head>
 <body>
     <c:if test="${empty order.name}">
-        <c:url value="/add" var="var"/>
+        <c:url value="orders/add" var="var"/>
     </c:if>
     <c:if test="${!empty order.name}">
-        <c:url value="/edit" var="var"/>
+        <c:url value="orders/edit" var="var"/>
     </c:if>
     <form action="${var}" method="POST">
         <c:if test="${empty order.name}">
