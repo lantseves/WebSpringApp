@@ -9,10 +9,11 @@ import ru.lantsev.model.entry.Recipe;
 import java.util.List;
 
 @Service
-public class RecipeServiceImpl implements RecipeDao {
+public class RecipeServiceImpl implements RecipeService {
 
     private RecipeDao recipeDao ;
 
+    @Autowired
     public void setRecipeDao(RecipeDao recipeDao) {
         this.recipeDao = recipeDao;
     }
@@ -20,11 +21,6 @@ public class RecipeServiceImpl implements RecipeDao {
     @Override
     public List<Recipe> allRecipe() {
         return recipeDao.allRecipe();
-    }
-
-    @Override
-    public List<Recipe> allRecipeWithMenu() {
-        return recipeDao.allRecipeWithMenu();
     }
 
     @Override

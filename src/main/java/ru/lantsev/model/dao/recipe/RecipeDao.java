@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface RecipeDao {
     List<Recipe> allRecipe();
-    List<Recipe> allRecipeWithMenu() ;
     Recipe save(Recipe recipe);
     void delete(Recipe recipe);
     Recipe getById(long id);

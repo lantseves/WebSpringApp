@@ -7,6 +7,7 @@ import java.util.Set;
 @Entity
 public class Recipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id ;
 
@@ -18,12 +19,6 @@ public class Recipe {
 
     @Column(name = "salary")
     private double salary ;
-
-    @ManyToMany
-    @JoinTable(name = "menu_recipe" ,
-            joinColumns = @JoinColumn(name = "menu_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id")) 
-    private Set<Menu> menus = new HashSet<>() ;
 
     @Version
     @Column(name = "version")
@@ -59,14 +54,6 @@ public class Recipe {
 
     public void setSalary(double salary) {
         this.salary = salary;
-    }
-
-    public Set<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(Set<Menu> menus) {
-        this.menus = menus;
     }
 
     public int getVersion() {

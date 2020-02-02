@@ -7,11 +7,15 @@ import java.util.Objects;
 @Table(name = "dishes", schema = "springtest")
 public class Dish {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id ;
 
     @Column(name = "salary")
     private double salary ;
+
+    @Column(name = "quantity")
+    private int quantity ;
 
     @Column(name = "name")
     private String name ;
@@ -34,6 +38,30 @@ public class Dish {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Recipe getRecipe() {

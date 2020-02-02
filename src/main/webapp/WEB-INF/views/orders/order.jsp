@@ -14,27 +14,30 @@
     <title>Orders</title>
 </head>
 <body>
-    <h2>Orders</h2>
+<h2>Orders</h2>
+    <a href="?form">Add new Order</a>
+    <p>
     <table>
         <tr>
             <th>id</th>
             <th>name</th>
+            <th width="120">date</th>
             <th>salary</th>
+            <th width="80">status</th>
         </tr>
         <c:forEach var="order" items="${orders}">
             <tr>
                 <td>${order.id}</td>
                 <td>${order.name}</td>
+                <td align="center">${order.dateOrdered}</td>
                 <td>${order.salary}</td>
+                <td align="center">${order.statusOrder}</td>
                 <td>
                     <a href="${orderUrl}${order.id}?form">edit</a>
-                    <a href="delete/${order.id}">delete</a>
+                    <a href="${orderUrl}/delete/${order.id}">delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
-
-    <h2>Add</h2>
-    <a href="add">Add new Order</a>
 </body>
 </html>

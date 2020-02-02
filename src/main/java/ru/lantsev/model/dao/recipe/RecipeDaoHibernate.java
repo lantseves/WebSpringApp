@@ -19,15 +19,10 @@ public class RecipeDaoHibernate implements RecipeDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Recipe> allRecipe() {
         return sessionFactory.getCurrentSession().createQuery("from Recipe ", Recipe.class).list();
-    }
-
-    @Override
-    public List<Recipe> allRecipeWithMenu() {
-        return sessionFactory.getCurrentSession().createQuery("select distinct r from Recipe r " +
-                "left join fetch r.menus m", Recipe.class).list();
     }
 
     @Override
@@ -44,7 +39,6 @@ public class RecipeDaoHibernate implements RecipeDao {
     @Override
     public Recipe getById(long id) {
         return sessionFactory.getCurrentSession().createQuery("select distinct r from Recipe r " +
-                "left join fetch r.menus m " +
                 "where r.id = :id" , Recipe.class)
                 .setParameter("id" , id)
                 .uniqueResult();

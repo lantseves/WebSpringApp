@@ -20,6 +20,7 @@
         <put-attribute name="body" value="/WEB-INF/views/home.jsp" />
     </definition>
 
+    <!-- Order Page -->
     <definition name="ordersPage" extends="base.definition">
         <put-attribute name="title" value="Orders page" />
         <put-attribute name="body" value="/WEB-INF/views/orders/order.jsp" />
@@ -29,4 +30,28 @@
         <put-attribute name="title" value="Edit order page" />
         <put-attribute name="body" value="/WEB-INF/views/orders/editOrder.jsp" />
     </definition>
+
+    <definition name="orderAddPage" extends="base.definition">
+        <put-attribute name="title" value="Add order page" />
+        <put-attribute name="body" value="/WEB-INF/views/orders/addOrder.jsp" />
+    </definition>
+    <!-- /Order Page -->
+
+    <!-- Recipe Page -->
+    <definition name="recipesPage" extends="base.definition">
+        <put-attribute name="title" value="Recipe page" />
+        <put-attribute name="body" value="/WEB-INF/views/recipe/recipes.jsp" />
+    </definition>
+
+    <definition name="recipeEditPage" extends="base.definition">
+        <put-attribute name="title" value="Edit recipe page" />
+        <put-attribute name="body" value="/WEB-INF/views/recipe/editRecipe.jsp" />
+    </definition>
+
+    <definition name="recipeAddPage" extends="base.definition">
+        <put-attribute name="title" value="Add recipe page" />
+        <put-attribute name="body" value="/WEB-INF/views/recipe/addRecipe.jsp" />
+    </definition>
+    <!-- /Recipe Page -->
+
 </tiles-definitions>

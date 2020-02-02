@@ -7,49 +7,48 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-        <title>Edit Order</title
+        <title>Edit Order</title>
 </head>
 <body>
-    <c:if test="${empty order.name}">
-        <c:url value="orders/add" var="var"/>
-    </c:if>
-    <c:if test="${!empty order.name}">
-        <c:url value="orders/edit" var="var"/>
-    </c:if>
-    <form action="${var}" method="POST">
-        <c:if test="${empty order.name}">
-            <input type="hidden" name="id" value=0>
-        </c:if>
-        <c:if test="${!empty order.name}">
-            <input type="hidden" name="id" value="${order.id}">
-        </c:if>
+        <form action="${order.id}?form"  method="POST">
 
-        <label for="name">Name</label>
-        <c:if test="${empty order.name}">
-            <input type="text" name="name" id="name">
-        </c:if>
-        <c:if test="${!empty order.name}">
-            <input type="text" name="name" id="name" value="${order.name}">
-        </c:if>
+                <input type="hidden" name="id" value="${order.id}">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="${order.name}">
 
-        <label for="salary">Salary</label>
-        <c:if test="${empty order.name}">
-            <input type="text" name="salary" id="salary">
-        </c:if>
-        <c:if test="${!empty order.name}">
-            <input type="text" name="salary" id="salary" value="${order.salary}">
-        </c:if>
+                <label for="date">Date</label>
+                <input type="text" name="date" id="date" readonly value="${order.dateOrdered}">
 
-        <c:if test="${empty order.name}">
-            <input type="submit" value="Add new order">
-        </c:if>
-        <c:if test="${!empty order.name}">
-            <input type="submit" value="Edit Order">
-        </c:if>
+                <label for="salary">Salary</label>
+                <input type="text" name="salary" id="salary" value="${order.salary}">
 
-    </form>
+                <label for="statusOrder">Status</label>
+                <select name="statusOrder"  id="statusOrder">
+                        <c:forEach items="${statusOrder}" var="option">
+                                <option value="${option}">${option}</option>
+                        </c:forEach>
+                </select>
+
+                <input type="submit" value="Edit order">
+        </form>
+
+        <h3>List dishes</h3>
+        </p>
+        <c:forEach var="dish" items="${order.dishes}">
+                <p>
+                        <label for="title${dish.id}">Recipe:</label>
+                        <input type="text" name="title" id="title${dish.id}" readonly value="${dish.name}"/>
+
+                        <label for="salary${dish.id}">Salary:</label>
+                        <input type="text" name="salary" id="salary${dish.id}" readonly value="${dish.salary}"/>
+
+                        <label for="quantity${dish.id}">quantity:</label>
+                        <input type="text" name="quantity" id="quantity${dish.id}" readonly value="${dish.quantity}"/>
+                </p>
+        </c:forEach>
 </body>
 </body>
 </html>

@@ -1,9 +1,7 @@
 package ru.lantsev.model.entry;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "orders" , schema = "springtest")
@@ -23,14 +21,14 @@ public class Order {
     private StatusOrder statusOrder ;
 
     @Column(name = "salary")
-    private long salary ;
+    private double salary ;
 
     @Version
     @Column(name = "version")
     private int version ;
 
     @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL , orphanRemoval = true)
-    private Set<Dish> dishes = new HashSet<>() ;
+    private List<Dish> dishes = new ArrayList<>() ;
 
     public long getId() {
         return id;
@@ -64,11 +62,11 @@ public class Order {
         this.statusOrder = statusOrder;
     }
 
-    public long getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -80,11 +78,11 @@ public class Order {
         this.version = version;
     }
 
-    public Set<Dish> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(Set<Dish> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
 

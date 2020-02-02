@@ -15,6 +15,7 @@
     <ul>
         <li><a href="${pageContext.request.contextPath}/">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/orders">Orders</a></li>
+        <li><a href="${pageContext.request.contextPath}/recipes">Recipes</a></li>
     </ul>
 </div>
 </body>

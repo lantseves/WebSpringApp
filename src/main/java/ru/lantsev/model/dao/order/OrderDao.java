@@ -1,5 +1,6 @@
 package ru.lantsev.model.dao.order;
 
+import org.springframework.data.repository.PagingAndSortingRepository;
 import ru.lantsev.model.entry.Order;
 
 import java.util.List;
